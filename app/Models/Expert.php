@@ -10,8 +10,11 @@ class Expert extends Model
 {
     use HasFactory;
 
+   protected $guard = "expert";
+
 
     protected $fillable=['fullname','email','password'];
+
 
 
     public function users()

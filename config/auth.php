@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+
 return [
 
     /*
@@ -14,8 +16,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'experts',
+        'passwords' => 'experts',
     ],
 
     /*
@@ -40,6 +42,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'expert' => [
+            'driver' => 'session',
+            'provider' => 'experts'
+        ]
     ],
 
     /*
@@ -64,6 +70,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'experts' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Expert::class
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -97,6 +107,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'experts' => [
+            'provider' => 'experts',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ]
     ],
 
     /*
