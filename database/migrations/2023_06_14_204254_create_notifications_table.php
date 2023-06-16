@@ -16,16 +16,15 @@ return new class extends Migration
             $table->id();
             $table->text('content');
             $table->enum('status',['comfirmed','refused']);
-            $table->foreignId('experts_id')
-                  ->constrained()
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade')
-                  ;
-            $table->foreignId('user_id')
-                  ->constrained()
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade')
-                  ;
+            $table->unsignedBigInteger('expert_id');
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('expert_id')->references('id')
+                  ->on('experts')
+                  ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
 
             $table->enum('sentBy',['admin','client','expert']);
             $table->enum('sentTo',['admin','client','expert']);

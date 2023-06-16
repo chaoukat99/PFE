@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             Expert::factory()
             ->has(Article::factory()->count(rand(1,10)))
             ->has(Earning::factory()->count(rand(1,5)))
+            // ->has(Notification::factory()->count(rand(1,3)))
 
             ->count(3)
             ,

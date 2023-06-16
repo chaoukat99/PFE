@@ -21,7 +21,7 @@ class Expert extends Model
 
     public function notifications()
     {
-        return $this->morphMany(Notification::class,'notifiable');
+        return $this->hasMany(Notification::class);
     }
 
     public function articles()

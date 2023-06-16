@@ -21,7 +21,7 @@ class NotificationFactory extends Factory
         return [
             'content'=>fake()->text(),
             'status'=>fake()->randomElement(['confirmed','refused']),
-            'experts_id'=>Expert::factory(),
+            'expert_id'=>Expert::factory(),
             'user_id'=>User::factory(),
             'sentTo'=>fake()->randomElement(['admin', 'client', 'expert']),
             'sentBy'=>fake()->randomElement(['admin', 'client', 'expert'])

@@ -11,9 +11,14 @@ class Notification extends Model
 
     protected $fillable=['content'];
 
-    public function notifiable()
+    public function experts()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Expert::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
     }
 
 
