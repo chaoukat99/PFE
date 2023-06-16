@@ -25,7 +25,7 @@ class User extends Authenticatable
 
     public function experts()
     {
-        return $this->belongsToMany(Expert::class,'expert_user')->withPivot('date');
+        return $this->belongsToMany(Expert::class,'expert_user')->withPivot('date','status');
     }
 
     public function notifications()
