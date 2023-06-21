@@ -17,11 +17,11 @@
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-   <x-menu-admin/>
+   <x-menu-expert/>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-    <x-navigation-comp />
+    <x-nav-expert />
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
