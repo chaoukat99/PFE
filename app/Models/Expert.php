@@ -4,23 +4,48 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable;
 
-class Expert extends Model implements Authenticatable
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+
+
+class Expert extends  Model implements Authenticatable
+
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
     use \Illuminate\Auth\Authenticatable;
-    protected $fillable=["nom","email","password"];
-    public function getAuthIdentifierName()
+
+
+    // use HasFactory;
+
+   protected $guard = "experts";
+
+
+   protected $fillable=['fullname','email','password'];
+
+
+
+    public function users()
     {
-        return 'id';
+        return $this->belongsToMany(User::class,'expert_user')->where('role','client');
     }
-    public function getAuthIdentifier()
+
+    public function notifications()
     {
-        return $this->getKey();
+        return $this->hasMany(Notification::class);
     }
-    public function getAuthPassword()
+
+    public function articles()
     {
-        return $this->password;
+        return $this->hasMany(Article::class);
+    }
+
+    public function earnings()
+    {
+        return $this->hasMany(Earning::class);
     }
 }

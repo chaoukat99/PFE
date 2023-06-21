@@ -8,26 +8,24 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('experts', function (Blueprint $table) {
             $table->id();
-            $table->string("nom");
-            $table->string("email",255);
-            $table->string("password");
+            $table->string('fullname');
+            $table->string('email')->unique();
+            $table->string('role')->default('expert');
+            $table->string('password');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('experts');
     }

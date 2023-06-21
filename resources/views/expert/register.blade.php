@@ -10,7 +10,7 @@
 <h3>Register Expert</h3>
 <form action={{ route("post-expert") }} method="POST">
     @csrf
-   <input type="text" name="nom" placeholder="Nom" ><br/>
+   <input type="text" name="fullname" placeholder="Nom" ><br/>
     <input type="text" name="email" id="" placeholder="Email"><br/>
     <input type="password" name="pass" id="" placeholder="Password"><br/>
     <button>Connexion</button>

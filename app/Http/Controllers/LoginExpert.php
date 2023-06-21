@@ -10,13 +10,13 @@ class LoginExpert extends Controller
 {
 
     public function index(){
-        return view("expert.login");
+        return view("expert.Auth.login");
     }
     public function showcreate(){
         return view("expert.register");
     }
     public function dash(){
-        return view("expert.dash");
+        return view("expert.Dash.dashboard");
     }
  public function save(Request $req){
       $credentials=$req->only("email","password");
@@ -27,14 +27,25 @@ class LoginExpert extends Controller
 
  }
 
+ public function deconn(){
+    Auth::logout();
+    session()->invalidate();
+    session()->regenerateToken();
+  return redirect("/");
+
+
+ }
+
 
     public function create(Request $req){
-        Expert::create([
-            "nom"=>$req->nom,
+        $expert=Expert::create([
+            "fullname"=>$req->fullname,
             "email"=>$req->email,
             "password"=>Hash::make($req->pass)
 
             ]);
-            return "expert created successfully";
+            Auth::guard('experts')->login($expert);
+            return redirect("/dash-expert");
+
     }
 }

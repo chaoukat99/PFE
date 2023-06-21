@@ -1,3 +1,7 @@
+<?php
+
+$name = Auth::guard('experts')->user()->nom;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +11,8 @@
     <title>Dash Expert</title>
 </head>
 <body>
-<h1>Dashboard Experts</h1>
+    
+<h1>Dashboard Experts {{$name}}</h1>
+
 </body>
 </html>
